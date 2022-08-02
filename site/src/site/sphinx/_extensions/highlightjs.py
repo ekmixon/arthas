@@ -39,13 +39,13 @@ class HljsHighlighter(object):
         return self.formatter
 
     def unhighlighted(self, source):
-        return '<pre>' + html.escape(source) + '</pre>\n'
+        return f'<pre>{html.escape(source)}' + '</pre>\n'
 
     def highlight_block(self, source, lang, opts=None, location=None, force=False, **kwargs):
         if not isinstance(source, text_type):
             source = source.decode()
 
-        if lang != None and lang != 'default':
+        if lang not in [None, 'default']:
             return '<div class="highlight hljs"><pre class="' + lang + '">' + html.escape(source) + '</pre></div>\n'
         else:
             return '<pre class="literal-block">' + html.escape(source) + '</pre>\n'
@@ -65,5 +65,3 @@ def setup(app):
     # Intercept the rendering of HTML literals.
     old_visitor = HTMLTranslator.visit_literal_block
     HTMLTranslator.visit_literal_block = lambda self, node: parsed_literal_visit_literal_block(self, node, old_visitor)
-
-    pass

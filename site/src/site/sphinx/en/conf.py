@@ -67,8 +67,8 @@ github_doc_root = 'https://github.com/alibaba/arthas/tree/master/site/src/site/s
 # The full version, including alpha/beta/rc tagss
 # release = 
 # read version from pom.xml
-rootDir = os.path.dirname(os.path.abspath(__file__)) + '/../../../../..'
-pomXml = ET.parse(rootDir + '/pom.xml')
+rootDir = f'{os.path.dirname(os.path.abspath(__file__))}/../../../../..'
+pomXml = ET.parse(f'{rootDir}/pom.xml')
 
 for projectChildrenElem in list(pomXml.getroot()):
   if projectChildrenElem.tag == '{http://maven.apache.org/POM/4.0.0}properties':
